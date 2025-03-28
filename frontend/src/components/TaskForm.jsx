@@ -5,22 +5,36 @@ import axiosInstance from "../axiosConfig";
 const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
   const { user } = useAuth();
   const [formData, setFormData] = useState({
-    title: "",
+    intakeId: "",
+    productName: "",
+    productAmount: "",
     description: "",
-    testform: "",
-    deadline: "",
+    storageRack: "",
+    shipmentId: "",
+    shipmentTime: "",
   });
 
   useEffect(() => {
     if (editingTask) {
       setFormData({
-        title: editingTask.title,
+        intakeId: editingTask.intakeId,
+        productName: editingTask.productName,
+        productAmount: editingTask.productAmount,
         description: editingTask.description,
-        testform: editingTask.testform,
-        deadline: editingTask.deadline,
+        storageRack: editingTask.storageRack,
+        shipmentId: editingTask.shipmentId,
+        shipmentTime: editingTask.shipmentTime,
       });
     } else {
-      setFormData({ title: "", description: "", testform: "", deadline: "" });
+      setFormData({
+        intakeId: "",
+        productName: "",
+        productAmount: "",
+        description: "",
+        storageRack: "",
+        shipmentId: "",
+        shipmentTime: "",
+      });
     }
   }, [editingTask]);
 
@@ -47,7 +61,15 @@ const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
         setTasks([...tasks, response.data]);
       }
       setEditingTask(null);
-      setFormData({ title: "", description: "", testform: "", deadline: "" });
+      setFormData({
+        intakeId: "",
+        productName: "",
+        productAmount: "",
+        description: "",
+        storageRack: "",
+        shipmentId: "",
+        shipmentTime: "",
+      });
     } catch (error) {
       alert("Failed to save task.");
     }
@@ -65,9 +87,27 @@ const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
       </h1>
       <input
         type="text"
-        placeholder="Title"
-        value={formData.title}
-        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+        placeholder="intakeId"
+        value={formData.intakeId}
+        onChange={(e) => setFormData({ ...formData, intakeId: e.target.value })}
+        className="w-full mb-4 p-2 border rounded"
+      />
+      <input
+        type="text"
+        placeholder="productName"
+        value={formData.productName}
+        onChange={(e) =>
+          setFormData({ ...formData, productName: e.target.value })
+        }
+        className="w-full mb-4 p-2 border rounded"
+      />
+      <input
+        type="text"
+        placeholder="productAmount"
+        value={formData.productAmount}
+        onChange={(e) =>
+          setFormData({ ...formData, productAmount: e.target.value })
+        }
         className="w-full mb-4 p-2 border rounded"
       />
       <input
@@ -79,17 +119,40 @@ const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
         }
         className="w-full mb-4 p-2 border rounded"
       />
+      {/* <input
+        type="text"
+        placeholder="storageRack"
+        value={formData.storageRack}
+        onChange={(e) =>
+          setFormData({ ...formData, storageRack: e.target.value })
+        }
+        className="w-full mb-4 p-2 border rounded"
+      /> */}
+      <select
+        value={formData.storageRack}
+        onChange={(e) =>
+          setFormData({ ...formData, storageRack: e.target.value })
+        }
+        className="w-full mb-4 p-2 border rounded"
+      >
+        <option value="someOption">Some option</option>
+        <option value="otherOption">Other option</option>
+      </select>
       <input
         type="text"
-        placeholder="testform"
-        value={formData.testform}
-        onChange={(e) => setFormData({ ...formData, testform: e.target.value })}
+        placeholder="shipmentId"
+        value={formData.shipmentId}
+        onChange={(e) =>
+          setFormData({ ...formData, shipmentId: e.target.value })
+        }
         className="w-full mb-4 p-2 border rounded"
       />
       <input
         type="date"
-        value={formData.deadline}
-        onChange={(e) => setFormData({ ...formData, deadline: e.target.value })}
+        value={formData.shipmentTime}
+        onChange={(e) =>
+          setFormData({ ...formData, shipmentTime: e.target.value })
+        }
         className="w-full mb-4 p-2 border rounded"
       />
       <button

@@ -19,11 +19,14 @@ const TaskList = ({ tasks, setTasks, setEditingTask }) => {
     <div>
       {tasks.map((task) => (
         <div key={task._id} className="bg-gray-100 p-4 mb-4 rounded shadow">
-          <h2 className="font-bold">{task.title}</h2>
+          <h2 className="font-bold">{task.intakeId}</h2>
+          <p>{task.productName}</p>
+          <p>{task.productAmount}</p>
           <p>{task.description}</p>
-          <p>{task.testform}</p>
+          <p>{task.storageRack}</p>
+          <p>{task.shipmentId}</p>
           <p className="text-sm text-gray-500">
-            Deadline: {new Date(task.deadline).toLocaleDateString()}
+            Deadline: {new Date(task.shipmentTime).toLocaleDateString()}
           </p>
           <div className="mt-2">
             <button
