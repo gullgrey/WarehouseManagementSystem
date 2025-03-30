@@ -9,13 +9,25 @@ const getTasks = async (req, res) => {
 };
 
 const addTask = async (req, res) => {
-  const { title, description, deadline } = req.body;
+  const {
+    intakeId,
+    productName,
+    productAmount,
+    description,
+    storageRack,
+    shipmentId,
+    shipmentTime,
+  } = req.body;
   try {
     const task = await Task.create({
       userId: req.user.id,
-      title,
+      intakeId,
+      productName,
+      productAmount,
       description,
-      deadline,
+      storageRack,
+      shipmentId,
+      shipmentTime,
     });
     res.status(201).json(task);
   } catch (error) {
@@ -24,14 +36,27 @@ const addTask = async (req, res) => {
 };
 
 const updateTask = async (req, res) => {
-  const { title, description, completed, deadline } = req.body;
+  const {
+    intakeId,
+    productName,
+    productAmount,
+    description,
+    completed,
+    storageRack,
+    shipmentId,
+    shipmentTime,
+  } = req.body;
   try {
     const task = await Task.findById(req.params.id);
-    if (!task) return res.status(404).json({ message: "Task not found" });
-    task.title = title || task.title;
+    if (!task) return res.status(404).json({ message: "Product not found" });
+    task.intakeId = intakeId || task.intakeId;
+    task.productName = productName || task.productName;
+    task.productAmount = productAmount || task.productAmount;
     task.description = description || task.description;
     task.completed = completed ?? task.completed;
-    task.deadline = deadline || task.deadline;
+    task.storageRack = storageRack || task.storageRack;
+    task.shipmentId = shipmentId || task.shipmentId;
+    task.shipmentTime = shipmentTime || task.shipmentTime;
     const updatedTask = await task.save();
     res.json(updatedTask);
   } catch (error) {
