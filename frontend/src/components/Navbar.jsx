@@ -19,7 +19,7 @@ const Navbar = () => {
         {user ? (
           <>
             <Link to="/tasks" className="mr-4">
-              CRUD
+              Inventory
             </Link>
             <Link to="/profile" className="mr-4">
               Profile

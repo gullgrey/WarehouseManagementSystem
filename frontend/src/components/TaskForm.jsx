@@ -82,19 +82,19 @@ const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
     >
       <h1 className="text-2xl font-bold mb-4">
         {editingTask
-          ? "Your Form Name: Edit Operation"
-          : "Your Form Name: Create Operation"}
+          ? "Warehouse Inventory: Update Product Details"
+          : "Warehouse Inventory: Add A New Product"}
       </h1>
       <input
         type="text"
-        placeholder="intakeId"
+        placeholder="Product Intake Id"
         value={formData.intakeId}
         onChange={(e) => setFormData({ ...formData, intakeId: e.target.value })}
         className="w-full mb-4 p-2 border rounded"
       />
       <input
         type="text"
-        placeholder="productName"
+        placeholder="Name of Product"
         value={formData.productName}
         onChange={(e) =>
           setFormData({ ...formData, productName: e.target.value })
@@ -103,7 +103,7 @@ const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
       />
       <input
         type="text"
-        placeholder="productAmount"
+        placeholder="Amount Received"
         value={formData.productAmount}
         onChange={(e) =>
           setFormData({ ...formData, productAmount: e.target.value })
@@ -112,22 +112,15 @@ const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
       />
       <input
         type="text"
-        placeholder="Description"
+        placeholder="Product Description"
         value={formData.description}
         onChange={(e) =>
           setFormData({ ...formData, description: e.target.value })
         }
         className="w-full mb-4 p-2 border rounded"
       />
-      {/* <input
-        type="text"
-        placeholder="storageRack"
-        value={formData.storageRack}
-        onChange={(e) =>
-          setFormData({ ...formData, storageRack: e.target.value })
-        }
-        className="w-full mb-4 p-2 border rounded"
-      /> */}
+      <h3 className="text font-bold mb-4">{"Assigned Storage Space"}</h3>
+
       <select
         value={formData.storageRack}
         onChange={(e) =>
@@ -135,12 +128,44 @@ const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
         }
         className="w-full mb-4 p-2 border rounded"
       >
-        <option value="someOption">Some option</option>
-        <option value="otherOption">Other option</option>
+        <option value="Unassigned">Unassigned</option>
+        <option value="Rack A - Section 1">Rack A - Section 1</option>
+        <option value="Rack A - Section 2">Rack A - Section 2</option>
+        <option value="Rack A - Section 3">Rack A - Section 3</option>
+        <option value="Rack A - Section 4">Rack A - Section 4</option>
+        <option value="Rack B - Section 1">Rack B - Section 1</option>
+        <option value="Rack B - Section 2">Rack B - Section 2</option>
+        <option value="Rack B - Section 3">Rack B - Section 3</option>
+        <option value="Rack B - Section 4">Rack B - Section 4</option>
+        <option value="Rack C - Section 1">Rack C - Section 1</option>
+        <option value="Rack C - Section 2">Rack C - Section 2</option>
+        <option value="Rack C - Section 3">Rack C - Section 3</option>
+        <option value="Rack C - Section 4">Rack C - Section 4</option>
+        <option value="Rack D - Section 1">Rack D - Section 1</option>
+        <option value="Rack D - Section 2">Rack D - Section 2</option>
+        <option value="Rack D - Section 3">Rack D - Section 3</option>
+        <option value="Rack D - Section 4">Rack D - Section 4</option>
+        <option value="Rack E - Section 1">Rack E - Section 1</option>
+        <option value="Rack E - Section 2">Rack E - Section 2</option>
+        <option value="Rack E - Section 3">Rack E - Section 3</option>
+        <option value="Rack E - Section 4">Rack E - Section 4</option>
+        <option value="Rack F - Section 1">Rack F - Section 1</option>
+        <option value="Rack F - Section 2">Rack F - Section 2</option>
+        <option value="Rack F - Section 3">Rack F - Section 3</option>
+        <option value="Rack F - Section 4">Rack F - Section 4</option>
+        <option value="Coldroom A - Section 1">Coldroom A - Section 1</option>
+        <option value="Coldroom A - Section 2">Coldroom A - Section 2</option>
+        <option value="Coldroom A - Section 3">Coldroom A - Section 3</option>
+        <option value="Coldroom A - Section 4">Coldroom A - Section 4</option>
+        <option value="Coldroom B - Section 1">Coldroom B - Section 1</option>
+        <option value="Coldroom B - Section 2">Coldroom B - Section 2</option>
+        <option value="Coldroom B - Section 3">Coldroom B - Section 3</option>
+        <option value="Coldroom B - Section 4">Coldroom B - Section 4</option>
       </select>
+      <h3 className="text font-bold mb-4">{"Shipment Details"}</h3>
       <input
         type="text"
-        placeholder="shipmentId"
+        placeholder="Shipment ID"
         value={formData.shipmentId}
         onChange={(e) =>
           setFormData({ ...formData, shipmentId: e.target.value })
@@ -159,7 +184,7 @@ const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
         type="submit"
         className="w-full bg-blue-600 text-white p-2 rounded"
       >
-        {editingTask ? "Update Button" : "Create Button"}
+        {editingTask ? "Update Product Details" : "Add Product to Inventory"}
       </button>
     </form>
   );
